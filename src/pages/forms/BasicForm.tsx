@@ -69,7 +69,7 @@ const BasicForm = () => {
         />
 
         <RadioGroupField
-          label="Animal"
+          legend="Animal"
           name="animal"
           value={values.animal}
           onChange={handleInputChange}

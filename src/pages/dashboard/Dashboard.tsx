@@ -17,6 +17,14 @@ import CustomersSummary from "./CustomersSummary";
 
 import "./Dashboard.css";
 
+//import { Amplify } from 'aws-amplify';
+
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
+//import awsExports from './aws-exports';
+//Amplify.configure(awsExports);
+
 /// Mock Data
 const barChartDataDemo = [
   {
@@ -89,6 +97,14 @@ const Dashboard = () => {
       <div>
         <h2>E' uscito carta</h2>
       </div>
+    <Authenticator>
+      {({ signOut, user }) => (
+        <main>
+          <h1>Hello {user?.username}</h1>
+          <button onClick={signOut}>Sign out</button>
+        </main>
+      )}
+    </Authenticator>
       <View borderRadius="6px" maxWidth="100%" padding="0rem" minHeight="100vh">
         <Grid
           templateColumns={{ base: "1fr", large: "1fr 1fr 1fr" }}
