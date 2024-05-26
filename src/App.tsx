@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "@aws-amplify/ui-react/styles.css";
 import "./App.css";
-import { ThemeProvider } from "@aws-amplify/ui-react";
+import { Authenticator, ThemeProvider } from "@aws-amplify/ui-react";
 import theme from "./theme";
 
 import Layout from "./components/Layout";
@@ -15,6 +15,7 @@ import EditForm from "./pages/forms/EditForm";
 
 export default function App() {
   return (
+    <Authenticator.Provider>
     <ThemeProvider theme={theme}>
       <div>
         {/* Routes nest inside one another. Nested route paths build upon
@@ -37,6 +38,7 @@ export default function App() {
         </Routes>
       </div>
     </ThemeProvider>
+    </Authenticator.Provider>
   );
 }
 

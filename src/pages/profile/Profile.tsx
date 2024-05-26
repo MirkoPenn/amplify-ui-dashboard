@@ -1,16 +1,38 @@
-import React from "react";
-import { View, Flex, useTheme } from "@aws-amplify/ui-react";
+import React, { useEffect, useState } from "react";
+import { View, Flex, useTheme, Loader } from "@aws-amplify/ui-react";
 import ProfileHeader from "./ProfileHeader";
 import ProfileInformation from "./ProfileInformation";
 import ProfileSettings from "./ProfileSettings";
 import "./Profile.css";
+import { fetchUserAttributes } from "aws-amplify/auth";
+
+interface ProfileAttributes {
+  name?: string;
+  email?: string;
+}
 
 const Profile = () => {
   const { tokens } = useTheme();
+  const defaultAttributes: ProfileAttributes = {name: "", email: ""};
+  const [data, setData] = useState(defaultAttributes);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+
+    const getUserInfo = async () => {
+      const attributes = await fetchUserAttributes();
+      setData(attributes);
+      setLoading(false);
+    };
+
+    getUserInfo();
+
+  }, []);
+
   return (
     <>
       <div>
-        <h2>Profile</h2>
+        <h2>Profilo</h2>
       </div>
       <View maxWidth="100%" padding="0rem" minHeight="100vh">
         <Flex
@@ -25,7 +47,7 @@ const Profile = () => {
             width={{ base: "100%", large: "100%" }}
             padding="1rem"
           >
-            <ProfileHeader />
+            {loading ? <Loader/> : <ProfileHeader name={data.name} email={data.email}/>}
           </View>
         </Flex>
 
