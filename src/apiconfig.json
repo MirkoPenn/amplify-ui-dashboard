@@ -1,0 +1,6 @@
+{
+    "name": "TestReactApi",
+    "endpoint": "https://wb7im4i2yj.execute-api.eu-west-3.amazonaws.com/",
+    "env": "master",
+    "region": "eu-west-3"
+}

@@ -12,6 +12,10 @@ import Tables from "./pages/tables";
 import UsersTable from "./pages/tables/UsersTablePage";
 import Forms from "./pages/forms";
 import EditForm from "./pages/forms/EditForm";
+import Users from "./pages/users";
+import { configureApi } from "./data/api";
+
+configureApi();
 
 export default function App() {
   return (
@@ -29,6 +33,7 @@ export default function App() {
             <Route path="tables" element={<Tables />} />
             <Route path="users-table" element={<UsersTable />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="users" element={<Users />} />
 
             {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit

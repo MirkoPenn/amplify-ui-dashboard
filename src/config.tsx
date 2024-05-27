@@ -6,6 +6,7 @@ import {
   MdModeEditOutline,
   MdAccountBox,
   MdOutlineTableChart,
+  MdListAlt,
 } from "react-icons/md";
 
 export const baseConfig = {
@@ -15,14 +16,11 @@ export const baseConfig = {
   search: true,
   header: true,
   headerText: "Logo",
-  footer: true,
+  footer: false,
   footerText: (
     <>
       <span>
-        © MIT {new Date().getFullYear()}, Made with ❤️ by {""}
-        <a href="https://github.com/mrtzdev" target="_blank" rel="noreferrer">
-          Mrtzdev
-        </a>
+        Footer text
       </span>
     </>
   ),
@@ -87,7 +85,13 @@ export const appNavs = [
   {
     eventKey: "profile",
     icon: <Icon as={MdAccountBox} />,
-    title: "Profile",
+    title: "Profilo",
     to: "/profile",
+  },
+  {
+    eventKey: "users",
+    icon: <Icon as={MdListAlt} />,
+    title: "Gestione utenti",
+    to: "/users",
   },
 ];
